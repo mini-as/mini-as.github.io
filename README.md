@@ -2,7 +2,10 @@
 
 What is minis:
 
-minis is small operating system run on intel x86 cpu written by me as hobby for fun and learning how computers work.
+minis is small operating system, designed to work on 
+computer with processor intel (80386) or better.
+written by me as hobby for fun and learning how
+computers work.
 
 minis assembler also written by me, and I make it as simple
 as possible and small.
