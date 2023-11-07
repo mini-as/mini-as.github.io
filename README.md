@@ -11,3 +11,6 @@ minis assembler also written by me, and I make it as simple
 as possible and small.
 
 I hope you enjoy :-)
+
+Info:
+Inside the Archive "minis.rar" you will find minis assembler and minis operating system, you need Winrar to open it.
