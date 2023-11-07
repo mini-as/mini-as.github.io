@@ -12,5 +12,8 @@ as possible and small.
 
 I hope you enjoy :-)
 
-Info:
-Inside the Archive "minis.rar" you will find minis assembler and minis operating system, you need Winrar to open it.
+#Info:
+Inside the Archive "minis.rar" you will find minis assembler and minis operating system, you need WinRAR archiver to open it.
+
+All Tools I used to build and test Minis OS and Minis Assembler run under windows operating system.
+I use fasm Assembler to compile Minis Assembler, which i used to compile minis operating system.
