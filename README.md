@@ -12,7 +12,7 @@ Info:
 
 Inside the Archive "minis.rar" you will find minis assembler and minis operating system, you need WinRAR archiver to open it.
 
-I used fasm Assembler to compile Minis Assembler, Which in turn I used to compile minis operating system, and I used Bochs (x86) PC emulator to test the Minis OS.
+I used fasm Assembler to compile Minis Assembler, Which in turn I used to compile minis operating system, and I used Bochs (x86) PC emulator to test Minis OS.
 
 Links:
 
@@ -20,6 +20,7 @@ https://mini-as.github.io/
 
 https://flatassembler.net/
 
-https://bochs.sourceforge.io/
-
 https://ltr-data.se/opencode.html#ImDisk
+
+
+https://bochs.sourceforge.io/
