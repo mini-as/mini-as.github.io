@@ -6,6 +6,7 @@ computer with processor intel (80386) or better.
 written by me as hobby for fun and learning how
 computers work.
 Minis assembler also written by me, and I used to compile minis OS.
+This project is licensed under the terms of the BSD 3-clause license.
 I hope you enjoy :-)
 
 Info:
