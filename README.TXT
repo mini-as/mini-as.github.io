@@ -6,8 +6,11 @@ written by me as hobby for fun and learning how
 computers work.
 Minis assembler also written by me, and I used to compile minis OS.
 
+License:
 This project is licensed under the terms of the BSD 3-clause license.
-I hope you enjoy :-)
+as/LICENSE.TXT --- license of minis assembler
+os/LICENSE.TXT --- license of minis operating system.
+
 
 Info:
 Inside the Archive "minis.rar" you will find minis assembler and minis operating system, you need WinRAR archiver to open it.
@@ -22,3 +25,5 @@ https://mini-as.github.io/
 https://flatassembler.net/
 https://ltr-data.se/opencode.html#ImDisk
 https://bochs.sourceforge.io/
+
+I hope you enjoy :-)
