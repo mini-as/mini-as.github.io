@@ -1,0 +1,367 @@
+﻿          
+		Minis assembler 0.09
+
+Copyright (c) 2021-2023 Maghdouri Mohamed All rights reserved.
+
+
+Table of contents :
+1- what is minis assembler
+2- how to use this assembler
+3- assembler syntax
+	3.1-  Number syntax
+	3.2-  Instruction syntax
+	3.3-  Directives
+	3.4-  Comments
+	3.5-  Define data
+	3.6-  Define labels
+	3.7-  Jumps
+	3.8-  Calls
+	3.9-  Move data
+	3.10- System instruction
+4- instruction supported
+
+
+1- What is Minis assembler :
+Minis assembler is a small assembler for processor intel (80386) 
+or better, and support almost all instruction of this cpu, this 
+assembler generate 16 or 32 code with just two passes, 
+and by default create flat binary file.
+This assembler is used to compile minis operating system.
+
+
+2- How to use this assembler :
+This assembler executed only from command line of windows 
+operating system, and need only 1 MB of Ram  memory.
+open cmd and type :
+as  [ source file name ] [ binary file name ]
+for example : as boot.asm boot.bin
+if no error found in source file you will see size of binary file.
+for example:
+success: 14 bytes.
+this message mean the size of binary file is 14 bytes.
+
+if assembler find error durring the compilation process, you will see error message.
+for example:
+error: invalid label.
+line : [5]
+this message mean the error is invalid label at line number 5, and of course at source file.
+to fix this error you must follow rules at chapter ( 3.6- Define labels ).
+
+error: unknown instruction.
+line : [13]
+this message mean at line number 13 the instruction is not supported by minis assembler 
+or not exist in assembly language.
+If you are beginner, check assembly programming tutorials.
+
+
+3- Assembler syntax :
+minis assembler follow intel syntax .
+
+3.1- Number syntax :
+The assembler for now only support Hexadecimal  numbers.
+Hexadicimal must be in UPPERCASE and from 0x00 to 0xFFFFFFFF 
+or you get message : "error: invalid operand."
+for example :
+0xF3, 0x23FA, 0x0016, 0xFFFFFFFF
+
+
+3.2- Instruction syntax :
+minis assembler accept only one instruction at each line 
+followed by line break or comment.
+
+registers :
+reg8 : al, cl, dl, bl, ah, ch, dh, bh
+reg16 : ax, cx, dx, bx, sp, bp, si, di
+reg32 : eax, ecx, edx, ebx, esp, ebp, esi, edi
+index : eax, ecx, edx, ebx, esi, edi, bx, si, di
+seg : cs, ss, ds, es, fs, gs
+cr : cr0, cr2, cr3
+
+ib : immediate byte (1-byte)
+imm8 : immediate byte (1-byte)
+imm16 : immediate word (2-byte)
+imm32 : immediate dword (4-byte)
+m8 : memory byte (1-byte)
+m16 : memory word (2-byte)
+m32 : memory dword (4-byte)
+
+for example :
+push es
+int 0xF3
+mov byte [si], 0x34 ; put immediate value 0x34 into the byte at address (content of register 'si')
+mov eax, here ; put address of label (here) into register eax
+mov edx, 0x12 ; put immediate value 0x12 into register edx
+mov ss, ax    ; mov must have same size of registers
+mov ebx, eax  ; mov must have same size of registers
+
+
+3.3- Directives :
+use16 : set code type 16-bit (real mode)
+use32 : set code type 32-bit (protected mode)
+times : repeat instruction number of times (max=65535).
+binary : include binary file.
+for example :
+times 0x05 db 0x00 ; repeat define ( byte 0x00 ) five times.
+binary 'icon.bmp'
+
+
+3.4- Comments :
+All line start with (;) are comment line and ignored by assembler.
+for example :
+; I am just comment
+int 0xF3   ; call to interrupt 0xF3
+
+
+3.5- Define data :
+To define data use one of this directives (db,dw,dd) followed by one value or more 
+separated with commas, also labels can be used as value (offset of label).
+for example :
+db 0x00 ; single byte
+db 'hello world', 0x00 ; sequence of bytes
+dw 0x1015  ; define 2 byte
+dd 0xFFFFFFFF ; define 4 byte
+this_address:
+db 0x33, this_address, 0x25 ; label inside define sequence of bytes
+pointer_n01:
+dd this_address ; example of creating pointer
+
+
+3.6- Define labels :
+label must be alone in line not followed by instruction, and not start with number.
+To define label you must use characters from (a) to (z) in lowercase, numbers and 
+underscore (_), labels must be between 1 to 32 characters, and followed by colon (:).
+for example :
+label_number_12:
+start:
+_jmp_here:
+
+
+3.7- Jumps :
+jump instruction must followed by operand size (byte, word, dword)
+
+unconditional jump :
+unconditional relative jmp must be followed by operand size (byte, word, dword)
+for example :
+	jmp byte here
+	nop
+	here:
+jmp 0x1000: word 0x0000  ; 16-bit far jump
+jmp 0x8: dword 0x10050    ; 32-bit far jump
+jmp word bx       ; jmp at address in bx register
+jmp dword eax   ; jmp at address in eax register
+
+conditional jump :
+conditional relative jmp must be followed by operand size (byte)
+for example :
+	je byte there
+	nop
+	there:
+
+
+3.8- Calls :
+The assembler for now only support operand size (word, dword)
+call instruction must followed by operand size 
+for example :
+call word exe_this ; run code at label (exe_this)
+; and return here after call instruction
+exe_this:
+mov si, 10
+ret
+call word bx  ; call address in bx register
+call dword eax  ; call address in eax register
+
+3.9- Move data :
+The instruction 'mov' used to copy content from the source operand to the destination 
+operand, with operands of the same size (byte,word,dword).
+Data movement work like this:
+mov destination, source
+
+minis assembler until now support only transfer between registers or from immediate 
+value to register, or from immediate value to memory using index registers and imposible 
+from memory to memory.
+
+imm8/imm16/imm32 can be hexadecimal or label
+the instruction 'mov reg8, byte [index]' move data at index register (eax, ecx, edx, ebx, esi, edi, bx, si, di) 
+to 8-bit register (al, cl, dl, bl, ah, ch, dh, bh).
+whene index register used alone the defaut segment is data segment (ds).
+for example :
+mov dl, byte [si] ; this copy one byte at address ds:si to dl register.
+you can also use segment register with index register 
+for example :
+mov ax, word [es:bx] ; this copy two bytes at address es:bx to ax register.
+
+To copy data to or from a register use the following rules:
+mov reg8, reg8
+mov reg8, imm8
+mov reg8, byte [index]
+mov byte [index], reg8
+mov byte [index], imm8 (hexadecimal)
+
+mov reg16, reg16
+mov reg16, imm16
+mov reg16, word [index]
+mov word [index], reg16
+mov word [index], imm16 (hexadecimal)
+
+mov reg32, reg32
+mov reg32, imm32
+mov reg32, dword [index]
+mov dword [index], reg32
+mov dword [index], imm32 (hexadecimal)
+
+mov seg, reg16
+mov reg16, seg
+mov cr, reg32
+mov reg32, cr
+
+
+3.10- System Instruction :
+The instruction 'lgdt' used to load value in operand into the global descriptor table register.
+for example :
+gdt_r: 
+	dw 0x17     ; limit (Size of GDT)
+	dd 0x1001E  ; base of GDT
+                    ; pword = 6 bytes
+	mov eax, gdt_r 
+	lgdt pword [eax] ; load GDT into GDTR
+
+The instruction 'lidt' used to load value in operand into the interrupt descriptor table register.
+for example :
+idt_r: 
+	dw 0xFE     ; limit (Size of IDT)
+	dd 0x100F8  ; base of IDT
+                    ; pword = 6 bytes
+	mov eax, idt_r 
+	lidt pword [eax] ; load IDT into IDTR
+	
+
+4- instruction supported :
+ aaa
+ aad
+ aam
+ aas
+ adc
+ add
+ and
+ call
+ cbw
+ cwde
+ clc
+ cld
+ cli
+ clts
+ cmc
+ cmp
+ cmpsb
+ cmpsw
+ cmpsd
+ cwd
+ cdq
+ daa
+ das
+ dec
+ div
+ hlt
+ idiv
+ imul
+ in
+ inc
+ insb
+ insw
+ insd
+ int
+ int3
+ into
+ iret
+ ja
+ jae
+ jb
+ jbe
+ jc
+ jcxz
+ jecxz
+ je
+ jz
+ jg
+ jge
+ jl
+ jle
+ jna
+ jnae
+ jnb
+ jnbe
+ jnc
+ jne
+ jng
+ jnge
+ jnl
+ jnle
+ jno
+ jnp
+ jns
+ jnz
+ jo
+ jp
+ jpe
+ jpo
+ js
+ jmp
+ lahf
+ leave
+ lgdt
+ lidt
+ lock
+ lodsb
+ lodsw
+ lodsd
+ loop
+ mov
+ movsb
+ movsw
+ movsd
+ movsx
+ movzx
+ mul
+ neg
+ nop
+ not
+ or
+ out
+ outsb
+ outsw
+ outsd
+ pop
+ popa
+ popad
+ popf
+ push
+ pusha
+ pushad
+ pushf
+ rep
+ repe
+ repz
+ repne
+ repnz
+ ret
+ sahf
+ shl
+ shr
+ sbb
+ scasb
+ scasw
+ scasd
+ stc
+ std
+ sti
+ stosb
+ stosw
+ stosd
+ sub
+ test
+ wait
+ xlatb
+ xor
+
+
+
