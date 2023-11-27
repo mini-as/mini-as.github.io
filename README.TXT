@@ -14,11 +14,11 @@ os/LICENSE.TXT --- license of minis operating system.
 
 Info:
 Inside the Archive "minis.rar" you will find minis assembler and minis operating system, you need WinRAR archiver to open it.
-I used fasm Assembler to compile Minis Assembler, Which in turn I used to compile minis operating system, and I used Bochs (x86) PC emulator to test Minis OS.
+I used fasm assembler to compile Minis assembler, Which in turn I used to compile minis operating system, and I used Bochs (x86) PC emulator to test Minis OS.
 
 Folders:
 /as --- source code of Minis assembler.
-/os --- source code of minis operating system.
+/os --- source code of Minis operating system.
 
 Links:
 https://mini-as.github.io/
