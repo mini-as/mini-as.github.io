@@ -1,3 +1,4 @@
+This repository is archived.
 
 What is Minis:
 Minis is small operating system, designed to work on 
