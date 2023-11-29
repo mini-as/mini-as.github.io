@@ -1,5 +1,5 @@
 ## Minis os :
-![minis os](os/snapshot.png)
+![minis os](/os/snapshot.png)
 
 ## What is Minis:
 Minis is small operating system, designed to work on 
@@ -10,6 +10,7 @@ Minis assembler also written by me, and I used to compile minis OS.
 
 ## License:
 This project is licensed under the terms of the BSD 3-clause license.
+
 as/LICENSE.TXT --- license of minis assembler
 os/LICENSE.TXT --- license of minis operating system.
 
@@ -20,6 +21,7 @@ I used fasm assembler to compile Minis assembler, Which in turn I used to compil
 
 ## Folders:
 /as --- source code of Minis assembler.
+
 /os --- source code of Minis operating system.
 
 ## Links:
