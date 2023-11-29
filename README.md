@@ -18,13 +18,15 @@ Inside the Archive "minis.rar" you will find minis assembler and minis operating
 I used fasm assembler to compile Minis assembler, Which in turn I used to compile minis operating system, and I used Bochs (x86) PC emulator to test Minis OS.
 
 ## Folders:
-#### /as --- source code of Minis assembler.
-#### /os --- source code of Minis operating system.
-
+'''
+/as --- source code of Minis assembler.
+/os --- source code of Minis operating system.
+'''
 ## Links:
+'''
 https://mini-as.github.io/
 https://flatassembler.net/
 https://ltr-data.se/opencode.html#ImDisk
 https://bochs.sourceforge.io/
-
-I hope you enjoy ;-)
+'''
+I hope you enjoy :wink:
