@@ -1,0 +1,59 @@
+[27-04-2024]
+version [0.10]
+First version able to compile itself.
+Executed only from MSDOS 2.0+ or any DOS emulators.
+Numbers can be written in hexadecimal, decimal or binary.
+Added many instructions.
+Added scale index base addressing.
+
+[06-11-2023]
+version [0.09]
+fixed pass counter.
+all instructions are revised.
+less code and better algorithms.
+Corrected a mistakes in 'mov cr, reg32', 'jcxz', 'lgdt' and 'lidt'.
+documentation updated.
+few small fixes.
+
+[27-10-2023]
+version [0.08]
+fixed out instruction.
+the instruction 'mov' improved.
+
+[18-10-2023]
+version [0.07]
+added use numbers to define labels.
+added use labels to define data value.
+documentation improved.
+
+[18-11-2021]
+version [0.06]
+many improvement.
+
+[04-11-2021]
+version [0.05]
+added many instructions.
+symbol table arranged from aaa to xor.
+no bug found.
+
+[19-10-2021]
+version [0.04]
+added many instructions.
+now define label check for reserved words.
+
+[11-10-2021]
+version [0.03]
+added file CHANGES.TXT
+fixed crushing bug whene source end with comment.
+added many instructions.
+now the assembler can build minis os [0.00]
+
+[04-10-2021]
+version [0.02]
+added many instructions.
+added use hexadecimal numbers as operand.
+documentation improved.
+
+[01-10-2021]
+version [0.01]
+first release of assembler.
