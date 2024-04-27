@@ -1,3 +1,3 @@
 @echo off
-fasm as.asm as.exe
+as as.asm das.com
 pause
