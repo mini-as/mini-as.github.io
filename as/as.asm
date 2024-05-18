@@ -385,10 +385,11 @@ skip_comment:
 	lods byte [esi]
 	cmp al, 0
 	je assemble_line_ok
+	cmp al, 10
+	je next_line
 	cmp al, 13 ; new line
-	jne skip_comment
-	dec esi
-	jmp next_line
+	je next_line
+	jmp skip_comment
 	
 skip_space:
 	lods byte [esi]
