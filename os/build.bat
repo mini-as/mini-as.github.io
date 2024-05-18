@@ -7,5 +7,5 @@ as kernel.asm kernel
 echo.
 echo ---- build system ------------
 imgmount a minis.img -t floppy
-copy c:\kernel A:\
+copy kernel A:\
 echo.
