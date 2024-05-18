@@ -28,3 +28,6 @@ https://www.dosbox.com/<br>
 https://bochs.sourceforge.io/
 
 I hope you enjoy :wink:
+
+## Test on android:
+
