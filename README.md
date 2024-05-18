@@ -29,5 +29,5 @@ https://bochs.sourceforge.io/
 
 I hope you enjoy :wink:
 
-## Test on android:
-
+## Test android:
+![minis](/android.jpg)
