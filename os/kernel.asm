@@ -235,15 +235,11 @@ start_pm:
     out 0xA1, al
     out 0x21, al
 	
-	mov ecx, 0x20
-	send_ei:
-	call end_int
-	loop send_ei
-	
+	hlt
 	sti ; life back :-)
 	here:
 	jmp here
-	hlt
+	
 	
 	
 ; Initialize Programmable Interrupt Controller (8259A)
