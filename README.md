@@ -27,7 +27,7 @@ https://mini-as.github.io/<br>
 https://www.dosbox.com/<br>
 https://bochs.sourceforge.io/
 
-I hope you enjoy :wink:
+Happy learning & coding.
 
 ## Test android:
 ![minis](/android.jpg)
