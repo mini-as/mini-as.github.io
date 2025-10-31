@@ -1,6 +1,11 @@
 ## Minis desktop:
 ![minis os](/snapshot.png)
 
+Working on :
+print desktop window (finished)
+Ps2 mouse driver (80% finshed)
+font (0%)
+
 ## What is Minis:
 Minis is small operating system, designed to work on 
 computers with processor intel 80386 or better.
