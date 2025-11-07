@@ -1,5 +1,5 @@
 ## Minis desktop:
-![minis os](/snapshot.png)
+![minis os](/snapshot_2.png)
 
 ## What is Minis:
 Minis is small operating system, designed to work on 
